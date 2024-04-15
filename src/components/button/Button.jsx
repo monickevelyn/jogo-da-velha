@@ -3,7 +3,7 @@ import { func, any } from 'prop-types'
 const Button = ({ value, onClick }) => {
   return (
     <>
-    <button className="p-1 w-14 h-14 inline-block border-2 rounded-sm text-lg"  onClick={onClick}>
+    <button className="p-1 w-14 h-14 inline-block rounded-lg text-lg bg-gray-900"  onClick={onClick}>
         {value}
     </button>
     </>

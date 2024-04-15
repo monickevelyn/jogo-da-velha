@@ -10,10 +10,14 @@
 }
 
 body {
-  max-width: 1500px;
+  max-width: 1470px;
   width: 100%;
   min-height: 100vh;
   padding: 1em;    
   background-color: #404040;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
