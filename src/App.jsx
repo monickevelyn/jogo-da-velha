@@ -1,16 +1,14 @@
 import Jogo from './components/jogo/Jogo'
 import './index.css'
 
-function App() {  
+const App = () => {  
   return (
     <>
-    <main 
-    style={{ width:"100%", height: "100%", display: "flex", justifyContent:"space-evenly", flexWrap:"nowrap", flexDirection:"column", alignItems:"center", gap:"1em" }}> 
-      <h1 style={{ fontSize:"2em", fontWeight:"bold" }}>Jogo da Velha</h1>
-      <Jogo />  
-    </main>    
+      <body className='flex flex-nowrap flex-col items-center justify-evenly'>
+        <h1 className="text-4xl font-bold">Jogo da Velha</h1>
+        <Jogo />
+      </body>
     </>
-  )
+  );
 }
-
 export default App
