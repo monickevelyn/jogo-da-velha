@@ -1,42 +1,29 @@
 import { useState } from "react";
 import VerificaVencedor from "../../logic/VerificaVencendor";
 import Button from "../button/Button"
+import Status from "../status/Status";
 
 const Jogo =() => {
     const [isX, setIsX] = useState(true);
     const [btn, setBtn] = useState(Array(9).fill(null));
+
+    const vencendor = VerificaVencedor(btn);
   
     const clickButton = (i) => {
-      // se já existe um valor (X/O) então ele continuará.
       if (btn[i] || VerificaVencedor(btn)) {
         return;
       }
   
-      const botoes = btn.slice();
+      const buttons = btn.slice();
+
+      isX ? buttons[i] = "X" : buttons[i] = "O";
   
-      // X ou O
-      if (isX) {
-        botoes[i] = "X";
-      } else {
-        botoes[i] = "O";
-      }
-  
-      setBtn(botoes);
+      setBtn(buttons);
       setIsX(!isX);
-    }
-  
-    const vencendor = VerificaVencedor(btn);
-    let status;
-    if (vencendor) {
-      status = "Vencendor: " + vencendor;
-    } else {
-      status = "Sua vez: " + (isX ? "X" : "O");
-    }
+    }   
   
     const Zerar = () => {
-      let zerar = btn.map(() => {
-        btn.value = " ";
-      });
+      let zerar = btn.map(() => { btn.value = " " });
       setBtn(zerar);
     }
   
@@ -60,9 +47,14 @@ const Jogo =() => {
         </div>
       </div>
           
-      <div className="font-bold text-xl">{status}</div>
+      <div>
+        { vencendor ? 
+            ( <Status status={"Vencendor: " + vencendor} className="text-green-400 font-bold text-xl" /> ) :
+            ( <Status status={"Sua vez: " + (isX ? "X" : "O")} className="font-bold text-xl" /> )
+        }
+      </div>
   
-      <button onClick={Zerar} className="w-24 p-2 rounded-sm">Zerar</button>
+      <button onClick={Zerar} className="w-24 h-10 p-1 rounded-md border-2">Zerar</button>
       </>
     );
 }
